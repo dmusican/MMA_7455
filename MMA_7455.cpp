@@ -23,24 +23,24 @@
     
 MMA_7455::MMA_7455()
 { 
-  I2C.begin();
+  I2c.begin();
 }
 
 void MMA_7455::initSensitivity(int sensitivity)
 {
   delay(1000);
-  I2C.write(MMA_7455_ADDRESS,MMA_7455_MODE_CONTROLL);
+  I2c.write(MMA_7455_ADDRESS,MMA_7455_MODE_CONTROLL);
   if(sensitivity == 2)
   {
-    I2C.write(MMA_7455_ADDRESS, MMA_7455_MODE_CONTROLL, MMA_7455_2G_MODE);  //Set Sensitivity to 2g Detection
+    I2c.write(MMA_7455_ADDRESS, MMA_7455_MODE_CONTROLL, MMA_7455_2G_MODE);  //Set Sensitivity to 2g Detection
   }
   if(sensitivity == 4)
   {
-    I2C.write(MMA_7455_ADDRESS, MMA_7455_MODE_CONTROLL, MMA_7455_2G_MODE);  //Set Sensitivity to 4g Detection
+    I2c.write(MMA_7455_ADDRESS, MMA_7455_MODE_CONTROLL, MMA_7455_2G_MODE);  //Set Sensitivity to 4g Detection
   }
   if(sensitivity == 8)
   {
-    I2C.write(MMA_7455_ADDRESS, MMA_7455_MODE_CONTROLL, MMA_7455_2G_MODE);  //Set Sensitivity to 8g Detection
+    I2c.write(MMA_7455_ADDRESS, MMA_7455_MODE_CONTROLL, MMA_7455_2G_MODE);  //Set Sensitivity to 8g Detection
   }
   delay(1000);
 }
@@ -55,20 +55,20 @@ unsigned char MMA_7455::readAxis(char axis)
 {
   if(axis == 'x' || axis == 'X')
   {
-    I2C.write(MMA_7455_ADDRESS, X_OUT);
+    I2c.write(MMA_7455_ADDRESS, X_OUT);
   }
   if(axis == 'y' || axis == 'Y')
   {
-    I2C.write(MMA_7455_ADDRESS, Y_OUT);
+    I2c.write(MMA_7455_ADDRESS, Y_OUT);
   }
   if(axis == 'z' || axis == 'Z')
   {
-    I2C.write(MMA_7455_ADDRESS, Z_OUT);
+    I2c.write(MMA_7455_ADDRESS, Z_OUT);
   }
-  I2C.read(MMA_7455_ADDRESS, 1);
-  if(I2C.available())
+  I2c.read(MMA_7455_ADDRESS, 1);
+  if(I2c.available())
   {
-    _buffer = I2C.receive();
+    _buffer = I2c.receive();
   }
   if(axis == 'x' || axis == 'X')
   {
